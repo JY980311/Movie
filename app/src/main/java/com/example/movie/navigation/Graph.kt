@@ -13,7 +13,7 @@ import com.example.movie.screen.Screen3
 fun NavigationGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "main") {
         composable("main"){
-            MainScreen()
+            MainScreen(navHostController = navController)
         }
         composable("screen2"){
             Screen2()

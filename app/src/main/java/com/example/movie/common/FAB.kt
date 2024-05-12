@@ -25,6 +25,7 @@ import kotlinx.coroutines.Dispatchers.Main
 @Composable
 fun FAB(
     modifier: Modifier = Modifier,
+    onClick: () -> Unit = { }
 ) {
 
     Column(
@@ -36,7 +37,7 @@ fun FAB(
             modifier = Modifier
                 .size(70.dp,40.dp)
                 .clip(RoundedCornerShape(20.dp)),
-            onClick = {  },
+            onClick =  onClick ,
             colors = IconButtonDefaults.iconButtonColors(
                 containerColor = Color.Black,
                 contentColor = Color.White

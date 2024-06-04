@@ -1,5 +1,5 @@
 package com.example.movie.navigation
 
-const val Main_ROUTE = "main"
-const val Screen2_ROUTE = "screen2"
-const val Screen3_ROUTE = "screen3"
+const val MAIN_ROUTE = "main"
+const val SCREEN2_ROUTE = "screen2"
+const val SCREEN3_ROUTE = "screen3"

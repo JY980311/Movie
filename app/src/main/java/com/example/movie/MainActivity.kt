@@ -12,9 +12,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.movie.navigation.BottomNavigationBar
 import com.example.movie.navigation.NavigationGraph
-import com.example.movie.navigation2.BottomNavigation
-import com.example.movie.navigation2.NavigationHost
 import com.example.movie.ui.theme.MovieTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,11 +38,11 @@ fun MainView() {
 
     Scaffold(
         bottomBar = {
-            BottomNavigation(navController = navController)
+            BottomNavigationBar(navController = navController)
         }
     ) {
         Box(modifier = Modifier.padding(it)){
-            NavigationHost(navController = navController)
+            NavigationGraph(navController = navController)
         }
     }
 }

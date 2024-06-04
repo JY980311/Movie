@@ -27,9 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.movie.common.FAB
-import com.example.movie.navigation2.BarItem
-import com.example.movie.navigation2.NavBarItems
-import com.example.movie.navigation2.NavRoutes
+import com.example.movie.navigation.SCREEN2_ROUTE
 
 @Composable
 fun MainScreen(navHostController: NavHostController) {
@@ -56,7 +54,7 @@ fun MainScreen(navHostController: NavHostController) {
                 .align(Alignment.BottomEnd)
                 .padding(bottom = 10.dp, end = 10.dp),
             onClick = {
-                navHostController.navigate(NavRoutes.Screen2.route)
+                navHostController.navigate(SCREEN2_ROUTE)
             }
         )
     }

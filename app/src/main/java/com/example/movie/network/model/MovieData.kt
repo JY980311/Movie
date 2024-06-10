@@ -1,4 +1,4 @@
-package com.example.network.model
+package com.example.movie.network.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -19,5 +19,5 @@ data class MovieData(
     val total_pages: Int = 0,
 
     @Json(name = "total_results")
-    val total_results: Int = 0
+    val total_results: Int = 0,
 )

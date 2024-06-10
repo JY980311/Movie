@@ -8,17 +8,19 @@ import androidx.navigation.compose.composable
 import com.example.movie.screen.MainScreen
 import com.example.movie.screen.Screen2
 import com.example.movie.screen.Screen3
+import com.example.movie.viewmodel.TestViewModel
+import okhttp3.Route
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "main") {
-        composable("main"){
-            MainScreen(navHostController = navController)
+    NavHost(navController = navController, startDestination = MAIN_ROUTE) {
+        composable(MAIN_ROUTE){
+            MainScreen(navHostController = navController, viewModel = TestViewModel())
         }
-        composable("screen2"){
+        composable(SCREEN2_ROUTE){
             Screen2()
         }
-        composable("screen3"){
+        composable(SCREEN3_ROUTE){
             Screen3()
         }
     }

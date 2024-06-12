@@ -26,8 +26,11 @@ class TestViewModel: ViewModel() {
         viewModelScope.launch {
             val apiService = RetrofitClient.getApiService()
             try {
-                val apiResponse = apiService.getNowPlaying()
-                _movieResponse.value = apiResponse
+                val apiResponse = apiService.getNowPlaying(page = 1)
+                val apiResoonse2 = apiService.getNowPlaying(page = 2)
+                val combinationApi = apiResponse.results + apiResoonse2.results
+
+                _movieResponse.value = apiResponse.copy(results = combinationApi)
 
             } catch (e: Exception) {
                 errorMessage = e.message.toString()

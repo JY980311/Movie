@@ -39,6 +39,44 @@ fun Test(angle: Float) {
                 val borderWidth = 1.dp.toPx()
                 val canvasSize = drawContext.size
                 val strokeSize = 10f
+                val adjustment = borderWidth + strokeSize / 2 // stroke는 path의 중심을 따라(즉 border의 중심을 따라)그려지기 때문에 중심을 기준으로 반씩 그려지므로 반만큼 빼줘야함
+                val adjustedSize = Size(canvasSize.width - 2 * adjustment, canvasSize.height - 2 * adjustment) // 2를 곱하는 이유는 양쪽에 stroke가 그려지기 때문이다 즉 width 기준으로는 좌우, height 기준으로는 상하에 stroke가 그려진다.
+
+                drawArc(
+                    color = Color.Red,
+                    startAngle = -90f,
+                    sweepAngle = angle,
+                    useCenter= false,
+                    topLeft = Offset(adjustment, adjustment),
+                    size = adjustedSize,
+                    style = Stroke(width = strokeSize, cap = StrokeCap.Round)
+                )
+
+                drawCircle(
+                    color = Color.Yellow,
+                    radius = 40f,
+                    center = Offset(canvasSize.width/2, canvasSize.height/2)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun Test2(angle: Float) {
+    Box(
+        modifier = Modifier
+            .size(60.dp)
+            .border(1.dp, Color.Black, CircleShape)
+            .background(Color.Cyan, CircleShape)
+        ,
+    ){
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            drawIntoCanvas {
+
+                val borderWidth = 1.dp.toPx()
+                val canvasSize = drawContext.size
+                val strokeSize = 10f
                 val adjustment = borderWidth + strokeSize / 2
                 val adjustedSize = Size(canvasSize.width - 2 * adjustment, canvasSize.height - 2 * adjustment)
 

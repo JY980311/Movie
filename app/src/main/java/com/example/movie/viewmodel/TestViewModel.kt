@@ -1,11 +1,13 @@
 package com.example.movie.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movie.network.model.MovieData
+import com.example.movie.network.model.image.ImageDatas
 import com.example.movie.network.retrofit.RetrofitClient
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,13 +18,19 @@ class TestViewModel: ViewModel() {
     private val _movieResponse= MutableStateFlow(MovieData())
     val movieResponse: StateFlow<MovieData> = _movieResponse
 
+    private val _selectedMovieIndex = MutableStateFlow(0)
+    val selectedMovieIndex: StateFlow<Int> = _selectedMovieIndex
+
+    private val _imageResponse = MutableStateFlow(ImageDatas(emptyList()))
+    val imageResponse: StateFlow<ImageDatas> = _imageResponse
+
     private var errorMessage : String by mutableStateOf("")
 
     init {
         getMovieData()
     }
 
-    fun getMovieData() {
+    private fun getMovieData() {
         viewModelScope.launch {
             val apiService = RetrofitClient.getApiService()
             try {
@@ -35,6 +43,26 @@ class TestViewModel: ViewModel() {
             } catch (e: Exception) {
                 errorMessage = e.message.toString()
             }
+        }
+    }
+
+    fun getImageData() {
+        viewModelScope.launch {
+            val apiService = RetrofitClient.getApiService()
+            try {
+                val apiResponse = apiService.getImages(movieId = movieResponse.value.results[_selectedMovieIndex.value].id)
+
+                _imageResponse.value = apiResponse
+            } catch (e: Exception) {
+                errorMessage = e.message.toString()
+            }
+        }
+    }
+
+    fun getSelectedMovieIndex(index: Int) {
+        if (index >= 0 && index < _movieResponse.value.results.size) {
+            _selectedMovieIndex.value = index
+            Log.d("MainScreen", "Selected Index2222: $index") /** **/
         }
     }
 }

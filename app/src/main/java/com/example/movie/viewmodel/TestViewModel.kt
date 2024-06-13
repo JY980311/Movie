@@ -51,10 +51,11 @@ class TestViewModel: ViewModel() {
             val apiService = RetrofitClient.getApiService()
             try {
                 val apiResponse = apiService.getImages(movieId = movieResponse.value.results[_selectedMovieIndex.value].id)
-
+                Log.d("TestViewModel", "Image Response: $apiResponse")
                 _imageResponse.value = apiResponse
             } catch (e: Exception) {
                 errorMessage = e.message.toString()
+                Log.d("TestViewModel", "Error: $errorMessage")
             }
         }
     }

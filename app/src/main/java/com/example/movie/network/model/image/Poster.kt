@@ -1,6 +1,6 @@
 package com.example.movie.network.model.image
 
-data class Backdrop(
+data class Poster(
     val aspect_ratio: Double,
     val file_path: String,
     val height: Int,

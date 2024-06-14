@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,6 +33,7 @@ import coil.compose.AsyncImagePainter
 import coil.request.ImageRequest
 import com.example.movie.common.ActorSlider
 import com.example.movie.common.CarouseSlider
+import com.example.movie.common.Chip
 import com.example.movie.common.CircleGraph
 import com.example.movie.viewmodel.TestViewModel
 
@@ -44,6 +46,8 @@ fun DetailScreen(
     val selectedIndex = viewModel.selectedMovieIndex.collectAsStateWithLifecycle()
     val movieData = viewModel.movieResponse.collectAsStateWithLifecycle()
     val imageData = viewModel.imageResponse.collectAsStateWithLifecycle()
+    val castData = viewModel.castResponse.collectAsStateWithLifecycle()
+    val genreData = viewModel.genresResponse.collectAsStateWithLifecycle()
 
     val selectedMovie = movieData.value.results[selectedIndex.value]
 
@@ -58,9 +62,9 @@ fun DetailScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .graphicsLayer(
-                scaleX = 1.5f, // 확대 비율 설정 (1.5배 확대)
-                scaleY = 1.5f,
-            ),
+                    scaleX = 1.5f, // 확대 비율 설정 (1.5배 확대)
+                    scaleY = 1.5f,
+                ),
             model = ImageRequest
                 .Builder(LocalContext.current)
                 .data("https://image.tmdb.org/t/p/w500/${selectedMovie.poster_path}")
@@ -110,9 +114,20 @@ fun DetailScreen(
                     )
                 )
 
-                CarouseSlider(images = imageData.value.backdrops.map {
+                CarouseSlider(images = imageData.value.backdrops.map { // 리스트의 각 요소에 대해 반복, 변환된 URL을 모아서 새로운 리스트로 만든다.
                     "https://image.tmdb.org/t/p/w500/${it.file_path}"
                 })
+
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ){
+                    items(selectedMovie.genre_ids.size) {
+                        Chip(text = genreData.value.genres[it].name)
+                    }
+                }
             }
 
             Column(
@@ -174,7 +189,12 @@ fun DetailScreen(
                 )
 
                 ActorSlider(
-                    images = images
+                    images = castData.value.cast.map {
+                        "https://image.tmdb.org/t/p/w500/${it.profile_path}"
+                    },
+                    names = castData.value.cast.map {
+                        it.name
+                    }
                 )
             }
         }

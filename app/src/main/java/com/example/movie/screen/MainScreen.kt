@@ -47,8 +47,9 @@ fun MainScreen(
                         voteAverage = movieData.value.results[it].vote_average,
                         onClick = {
                             viewModel.getSelectedMovieIndex(it)
-                            Log.d("MainScreen", "Selected Index: $it") /** **/
                             viewModel.getImageData()
+                            viewModel.getCreditData()
+                            viewModel.getGenresData()
                             navHostController.navigate(DETAILSCRREN_ROUTE)
                         }
                     )

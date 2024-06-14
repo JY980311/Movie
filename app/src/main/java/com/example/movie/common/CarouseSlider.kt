@@ -46,14 +46,14 @@ fun CarouseSlider(
     ) { page ->
         Card(
             modifier = Modifier
-                .height(300.dp),
+                .height(200.dp),
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 8.dp
             ),
             shape = RoundedCornerShape(12.dp)
         ) {
             AsyncImage(
-                modifier = Modifier.width(200.dp),
+                modifier = Modifier.width(300.dp),
                 model = images[page],
                 contentDescription = "Image",
                 contentScale = ContentScale.FillBounds,

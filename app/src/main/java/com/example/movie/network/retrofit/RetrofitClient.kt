@@ -13,7 +13,7 @@ class RetrofitClient {
 
         private var apiService: IApiService? = null // IApiService 인터페이스를 사용할 수 있도록 선언
 
-        private var supabaseService: supabaseApiService? = null // supabaseApiService 인터페이스를 사용할 수 있도록 선언
+        private var supabaseService: SupabaseApiService? = null // supabaseApiService 인터페이스를 사용할 수 있도록 선언
 
         fun getApiService(): IApiService {
             if (apiService == null) {
@@ -26,12 +26,13 @@ class RetrofitClient {
                     .baseUrl(BASE_URL)
                     .addConverterFactory(MoshiConverterFactory.create(moshi))
                     .build()
-                    .create(IApiService::class.java) // IApiService 인터페이스를 사용할 수 있도록 생성
+                    .create(IApiService::class.java)
+                    // IApiService 인터페이스를 사용할 수 있도록 생성
             }
             return apiService!! // apiService가 null이 아닌 경우 반환
         }
 
-        fun getSupabaseApiService(): supabaseApiService {
+        fun getSupabaseApiService(): SupabaseApiService {
             if (supabaseService == null) {
 
                 val moshi = Moshi.Builder()
@@ -42,9 +43,10 @@ class RetrofitClient {
                     .baseUrl(SUPABASE_URL)
                     .addConverterFactory(MoshiConverterFactory.create(moshi))
                     .build()
-                    .create(supabaseApiService::class.java) // IApiService 인터페이스를 사용할 수 있도록 생성
+                    .create(SupabaseApiService::class.java) // IApiService 인터페이스를 사용할 수 있도록 생성
             }
             return supabaseService!! // apiService가 null이 아닌 경우 반환
         }
     }
+
 }

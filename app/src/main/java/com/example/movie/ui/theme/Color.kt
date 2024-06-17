@@ -23,3 +23,5 @@ val GraphLowBackground = Color(0xFF4D1632)
 
 val GraphNonePercentage = Color(0xFF626363)
 
+val MainColor = Color(0xFF1C1C1C)
+val ButtonColor = Color(0xFFC0C0C0)

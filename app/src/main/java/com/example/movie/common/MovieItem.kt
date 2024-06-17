@@ -109,7 +109,7 @@ fun MovieItem(
         Text(
             modifier = Modifier.padding(top = 8.dp),
             text = movieName,
-            color = Color.Black,
+            color = Color.White,
             fontSize = 16.sp
         )
     }

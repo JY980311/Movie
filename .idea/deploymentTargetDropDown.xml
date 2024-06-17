@@ -21,6 +21,28 @@
           <timeTargetWasSelectedWithDropDown value="2024-06-12T17:46:31.804930100Z" />
         </State>
       </entry>
+      <entry key="PreviewMovieTextField">
+        <State />
+      </entry>
+      <entry key="PreviewScreen2">
+        <State />
+      </entry>
+      <entry key="PreviewWriteScreen">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\zdy20\.android\avd\Pixel_7_Pro_API_30.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-06-17T09:45:52.869795200Z" />
+        </State>
+      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -34,7 +56,7 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-06-13T15:37:04.604871100Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-06-15T10:18:51.687265800Z" />
         </State>
       </entry>
     </value>

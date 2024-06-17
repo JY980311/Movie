@@ -124,7 +124,7 @@ fun DetailScreen(
                         .padding(start = 16.dp),
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ){
-                    items(selectedMovie.genre_ids.size) {
+                    items(genreData.value.genres.size) {
                         Chip(text = genreData.value.genres[it].name)
                     }
                 }

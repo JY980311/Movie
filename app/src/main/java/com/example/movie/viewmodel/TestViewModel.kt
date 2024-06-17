@@ -13,24 +13,25 @@ import com.example.movie.network.model.image.ImageData
 import com.example.movie.network.retrofit.RetrofitClient
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class TestViewModel: ViewModel() {
 
     private val _movieResponse= MutableStateFlow(MovieData())
-    val movieResponse: StateFlow<MovieData> = _movieResponse
+    val movieResponse: StateFlow<MovieData> = _movieResponse.asStateFlow()
 
     private val _imageResponse = MutableStateFlow(ImageData(emptyList(), 0, emptyList(), emptyList()))
-    val imageResponse: StateFlow<ImageData> = _imageResponse
+    val imageResponse: StateFlow<ImageData> = _imageResponse.asStateFlow()
 
     private val _selectedMovieIndex = MutableStateFlow(0)
-    val selectedMovieIndex: StateFlow<Int> = _selectedMovieIndex
+    val selectedMovieIndex: StateFlow<Int> = _selectedMovieIndex.asStateFlow()
 
     private val _castResponse = MutableStateFlow(CreditData(emptyList(), emptyList(), 0))
-    val castResponse: StateFlow<CreditData> = _castResponse
+    val castResponse: StateFlow<CreditData> = _castResponse.asStateFlow()
 
     private val _genresResponse = MutableStateFlow(DetailMovieData())
-    val genresResponse: StateFlow<DetailMovieData> = _genresResponse
+    val genresResponse: StateFlow<DetailMovieData> = _genresResponse.asStateFlow()
 
     private var errorMessage : String by mutableStateOf("")
 

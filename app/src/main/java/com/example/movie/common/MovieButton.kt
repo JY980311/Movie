@@ -12,18 +12,20 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.movie.ui.theme.ButtonColor
 
 @Composable
-fun MainButton(
+fun MovieButton(
+    modifier:Modifier = Modifier,
     text: String = "Button",
     onClick: () -> Unit
 ) {
     Button(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Black,
-            contentColor = Color.White
+            containerColor = ButtonColor,
+            contentColor = Color.Black
         ),
         onClick = { onClick() }
     ) {
@@ -39,5 +41,5 @@ fun MainButton(
 @Preview(showBackground = true)
 @Composable
 fun MainButtonPreview() {
-    MainButton( text = "Button", onClick = {})
+    MovieButton( text = "Button", onClick = {})
 }

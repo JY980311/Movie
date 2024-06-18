@@ -88,7 +88,8 @@ fun ChatBox(
                     modifier = Modifier,
                     text = time,
                     style = TextStyle(
-                        color = Color.White
+                        color = Color.LightGray,
+                        fontSize = 10.sp
                     )
                 )
             }

@@ -24,13 +24,14 @@ import com.example.movie.common.MovieButton
 import com.example.movie.common.MovieTextField
 import com.example.movie.ui.theme.MainColor
 import com.example.movie.viewmodel.PostViewModel
+import com.example.movie.viewmodel.State
 
 @Composable
 fun WriteScreen(
     viewModel: PostViewModel
 ) {
 
-    val postData = viewModel.postData.collectAsState()
+    val state = viewModel.state.collectAsState()
     val sendPostData = viewModel.sendPostData.collectAsState()
     val focusManager = LocalFocusManager.current
 
@@ -77,7 +78,8 @@ fun WriteScreen(
         Spacer(modifier = Modifier.weight(1f))
 
         MovieButton(
-            modifier = Modifier.padding(bottom = 25.dp)
+            modifier = Modifier.padding(bottom = 25.dp),
+            loading = state.value == State.LOADING,
         ) {
             //TODO: 글 보내기
             viewModel.createPostData(viewModel.sendPostData.value)

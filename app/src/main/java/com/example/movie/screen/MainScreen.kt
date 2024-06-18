@@ -1,6 +1,5 @@
 package com.example.movie.screen
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,7 +11,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -21,7 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.movie.common.FAB
 import com.example.movie.common.MovieItem
 import com.example.movie.navigation.DETAILSCRREN_ROUTE
-import com.example.movie.navigation.SCREEN2_ROUTE
+import com.example.movie.navigation.COMMUNITYSCREEN_ROUTE
 import com.example.movie.ui.theme.MainColor
 import com.example.movie.viewmodel.TestViewModel
 
@@ -69,7 +67,7 @@ fun MainScreen(
                 .align(Alignment.BottomEnd)
                 .padding(bottom = 10.dp, end = 10.dp),
             onClick = {
-                navHostController.navigate(SCREEN2_ROUTE)
+                navHostController.navigate(COMMUNITYSCREEN_ROUTE)
             }
         )
     }

@@ -21,11 +21,11 @@ interface SupabaseApiService {
         "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkcG9hZHFuYm56bW15Z25zYWR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgzNDYzOTgsImV4cCI6MjAzMzkyMjM5OH0.slFtE--CP7YabhnPxsFhIhCnKdeB8aZZdgjMKJOzEEQ",
         "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkcG9hZHFuYm56bW15Z25zYWR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgzNDYzOTgsImV4cCI6MjAzMzkyMjM5OH0.slFtE--CP7YabhnPxsFhIhCnKdeB8aZZdgjMKJOzEEQ",
         "Content-Type: application/json",
-        "Prefer: return=minimal"
+        "Prefer: return=representation"
     )
     @POST("Post")
     suspend fun createPost(
         @Query("apikey") apikey: String = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkcG9hZHFuYm56bW15Z25zYWR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgzNDYzOTgsImV4cCI6MjAzMzkyMjM5OH0.slFtE--CP7YabhnPxsFhIhCnKdeB8aZZdgjMKJOzEEQ",
         @Body sendPostData: SendPostData
-    ) : Response<SendPostData>
+    ) : Response<List<SendPostData>>
 }
